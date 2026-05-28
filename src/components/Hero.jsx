@@ -155,6 +155,8 @@ export default function Hero() {
                   src={personalInfo.profileImage}
                   alt={`${personalInfo.name} - AI/ML Engineer and Researcher`}
                   className="w-full h-full object-cover"
+                  fetchPriority="high"
+                  decoding="async"
                   onError={(e) => {
                     e.target.style.display = 'none';
                     e.target.nextSibling.style.display = 'flex';

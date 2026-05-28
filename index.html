@@ -2,28 +2,129 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#1f2937" />
+    <meta name="color-scheme" content="light" />
+
+    <!-- Icons & Manifest -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- SEO Meta Tags -->
-    <title>Varad Patil | AI/ML Engineer & Researcher</title>
-    <meta name="description" content="Varad Patil - AI/ML Engineer and Researcher specializing in Large Language Models, RAG Systems, and Intelligent Information Retrieval. M.Tech at IIT Kanpur." />
-    <meta name="keywords" content="Varad Patil, AI Engineer, ML Researcher, LLM, RAG, IIT Kanpur, Machine Learning, Deep Learning" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Primary SEO -->
+    <title>Varad Patil | AI/ML Engineer & Researcher — LLMs, RAG, NLP</title>
+    <meta
+      name="description"
+      content="Portfolio of Varad Patil — AI/ML Engineer and Researcher specializing in Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), and intelligent information retrieval. M.Tech in AI for Sustainability at IIT Kanpur."
+    />
+    <meta
+      name="keywords"
+      content="Varad Patil, AI Engineer, ML Researcher, LLM, RAG, LangChain, LLaMA2, FAISS, NLP, Deep Learning, Machine Learning, IIT Kanpur, AI Portfolio, Generative AI, Vector Search"
+    />
     <meta name="author" content="Varad Patil" />
-    
-    <!-- Open Graph / Social -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="canonical" href="https://varadiitk.vercel.app//" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Varad Patil" />
+    <meta property="og:url" content="https://varadiitk.vercel.app//" />
     <meta property="og:title" content="Varad Patil | AI/ML Engineer & Researcher" />
-    <meta property="og:description" content="AI/ML Engineer specializing in LLMs, RAG Systems, and Intelligent Information Retrieval." />
-    <meta property="og:image" content="/images/profile.jpg" />
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <meta
+      property="og:description"
+      content="AI/ML Engineer specializing in LLMs, RAG systems, and intelligent information retrieval. M.Tech at IIT Kanpur."
+    />
+    <meta property="og:image" content="https://varadiitk.vercel.app//images/varad.jpeg" />
+    <meta property="og:image:alt" content="Varad Patil — AI/ML Engineer & Researcher" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Varad Patil | AI/ML Engineer & Researcher" />
+    <meta
+      name="twitter:description"
+      content="AI/ML Engineer specializing in LLMs, RAG systems, and intelligent information retrieval."
+    />
+    <meta name="twitter:image" content="https://varadiitk.vercel.app//images/varad.jpeg" />
+    <meta name="twitter:image:alt" content="Varad Patil — AI/ML Engineer & Researcher" />
+
+    <!-- Performance: preconnect & font preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap"
+    />
+    <link rel="preload" as="image" href="/images/varad.jpeg" fetchpriority="high" />
+
+    <!-- Structured Data: Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Varad Patil",
+        "url": "https://varadiitk.vercel.app//",
+        "image": "https://varadiitk.vercel.app//images/varad.jpeg",
+        "jobTitle": "AI/ML Engineer & Researcher",
+        "description": "AI/ML Engineer specializing in Large Language Models, Retrieval-Augmented Generation, and intelligent information retrieval systems.",
+        "email": "mailto:varadapatil123@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Sangli",
+          "addressCountry": "IN"
+        },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology, Kanpur" },
+          { "@type": "CollegeOrUniversity", "name": "Rajarambapu Institute of Technology" }
+        ],
+        "knowsAbout": [
+          "Large Language Models",
+          "Retrieval-Augmented Generation",
+          "Natural Language Processing",
+          "Machine Learning",
+          "Deep Learning",
+          "Vector Search",
+          "LangChain"
+        ],
+        "sameAs": [
+          "https://linkedin.com/in/varad-patil-web-dev",
+          "https://github.com/devVaradPatil/"
+        ]
+      }
+    </script>
+
+    <!-- Structured Data: WebSite -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Varad Patil — AI/ML Engineer Portfolio",
+        "url": "https://varadiitk.vercel.app//",
+        "inLanguage": "en"
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="padding: 2rem; font-family: system-ui, sans-serif; text-align: center;">
+        <h1>Varad Patil — AI/ML Engineer &amp; Researcher</h1>
+        <p>
+          This portfolio requires JavaScript. Reach out at
+          <a href="mailto:varadapatil123@gmail.com">varadapatil123@gmail.com</a>
+          or view code on
+          <a href="https://github.com/devVaradPatil/" rel="noopener">GitHub</a>.
+        </p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,0 +1,19 @@
+{
+  "name": "Varad Patil — AI/ML Engineer & Researcher",
+  "short_name": "Varad Patil",
+  "description": "Portfolio of Varad Patil — AI/ML Engineer specializing in LLMs, RAG, and intelligent information retrieval.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1f2937",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

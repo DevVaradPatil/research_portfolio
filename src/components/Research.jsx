@@ -39,6 +39,8 @@ export default function Research() {
                       src={paper.image}
                       alt={`${paper.title} - Architecture Diagram`}
                       className="w-full h-full object-contain bg-white"
+                      loading="lazy"
+                      decoding="async"
                       whileHover={{ scale: 1.03 }}
                       transition={{ duration: 0.5, ease: EASE }}
                       onError={(e) => {

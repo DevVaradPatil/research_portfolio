@@ -68,6 +68,8 @@ export default function Experience() {
                           src={exp.logo}
                           alt={`${exp.company} logo`}
                           className="w-full h-full object-contain p-2"
+                          loading="lazy"
+                          decoding="async"
                           onError={(e) => {
                             e.target.style.display = 'none';
                             e.target.nextSibling.style.display = 'flex';

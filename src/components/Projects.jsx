@@ -42,6 +42,8 @@ export default function Projects() {
                     src={project.image}
                     alt={`${project.title} - Project Screenshot`}
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
                     whileHover={{ scale: 1.06 }}
                     transition={{ duration: 0.5, ease: EASE }}
                     onError={(e) => {
