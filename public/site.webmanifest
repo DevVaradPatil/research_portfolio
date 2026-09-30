@@ -1,7 +1,7 @@
 {
-  "name": "Varad Patil — AI/ML Engineer & Researcher",
+  "name": "Varad Patil, AI/ML Engineer & Researcher",
   "short_name": "Varad Patil",
-  "description": "Portfolio of Varad Patil — AI/ML Engineer specializing in LLMs, RAG, and intelligent information retrieval.",
+  "description": "Portfolio of Varad Patil, AI/ML Engineer and M.Tech researcher at IIT Kanpur.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -10,10 +10,19 @@
   "lang": "en",
   "icons": [
     {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
       "src": "/favicon.svg",
       "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/svg+xml"
     }
   ]
 }

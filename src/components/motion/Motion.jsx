@@ -1,37 +1,9 @@
 import { motion } from "framer-motion";
+import { EASE, VIEWPORT } from "./ease";
 
-// Easings & shared timing
-const EASE = [0.22, 1, 0.36, 1];
-
-// --- Variants ---------------------------------------------------------------
-
-export const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: EASE },
-  },
-};
-
-export const fadeIn = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { duration: 0.6, ease: EASE } },
-};
-
-export const staggerContainer = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.05,
-    },
-  },
-};
-
-// --- Helpers ----------------------------------------------------------------
-
-const viewport = { once: true, amount: 0.2 };
+// NOTE: never put Tailwind `transition-all` / `transform` classes on elements that
+// framer animates (y, scale). CSS would re-ease every frame and the motion stutters.
+// Use `transition-[box-shadow,border-color]` or `transition-colors` instead.
 
 /**
  * Fades in + slides up when scrolled into view. Drop-in wrapper.
@@ -50,7 +22,7 @@ export function FadeIn({
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={viewport}
+      viewport={VIEWPORT}
       transition={{ duration: 0.6, ease: EASE, delay }}
       {...rest}
     >
@@ -80,7 +52,7 @@ export function Stagger({
       }}
       initial="hidden"
       whileInView="show"
-      viewport={viewport}
+      viewport={VIEWPORT}
       {...rest}
     >
       {children}
@@ -111,37 +83,16 @@ export function StaggerItem({
 }
 
 /**
- * Card with subtle hover lift + entrance animation. Use inside <Stagger> or standalone.
+ * Hover-lift card. Entrance comes from the surrounding FadeIn/StaggerItem, not from here,
+ * so animations never stack.
  */
-export function MotionCard({
-  as: Tag = "div",
-  className = "",
-  hoverY = -4,
-  inStagger = false,
-  delay = 0,
-  children,
-  ...rest
-}) {
+export function HoverCard({ as: Tag = "div", hoverY = -4, className = "", children, ...rest }) {
   const MotionTag = motion[Tag] || motion.div;
-  const entrance = inStagger
-    ? {
-        variants: {
-          hidden: { opacity: 0, y: 20 },
-          show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
-        },
-      }
-    : {
-        initial: { opacity: 0, y: 20 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport,
-        transition: { duration: 0.5, ease: EASE, delay },
-      };
-
   return (
     <MotionTag
-      className={className}
-      whileHover={{ y: hoverY, transition: { duration: 0.25, ease: EASE } }}
-      {...entrance}
+      className={`transition-[box-shadow,border-color] duration-300 ${className}`}
+      whileHover={{ y: hoverY }}
+      transition={{ duration: 0.3, ease: EASE }}
       {...rest}
     >
       {children}
@@ -149,4 +100,23 @@ export function MotionCard({
   );
 }
 
-export { motion };
+/**
+ * Section title + animated underline + optional intro paragraph.
+ */
+export function SectionHeader({ title, intro, center = false }) {
+  return (
+    <FadeIn className={`mb-16 ${center ? "text-center" : ""}`}>
+      <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4">{title}</h2>
+      <motion.div
+        className={`h-1 w-16 bg-gray-900 ${center ? "mx-auto origin-center" : "origin-left"}`}
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={VIEWPORT}
+        transition={{ duration: 0.6, ease: EASE, delay: 0.2 }}
+      />
+      {intro && (
+        <p className={`text-gray-600 mt-6 max-w-2xl ${center ? "mx-auto" : ""}`}>{intro}</p>
+      )}
+    </FadeIn>
+  );
+}

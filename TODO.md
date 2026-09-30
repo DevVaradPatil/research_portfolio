@@ -1,100 +1,62 @@
-# TODO – Content & Asset Replacement
+# TODO: Placement-ready AI portfolio
 
-This file tracks all the placeholder content and assets that need to be replaced with real content before deploying the portfolio.
+Goal: this site is the "AI Portfolio" link on both placement resumes, so its content has to match them.
+Sources of truth:
+- `public/VARAD_PATIL_RESUME_AI.pdf`: main AI/ML resume
+- `public/VARAD_PATIL_MASTER_RESUME.pdf`: Full CV (all projects)
+- SDE / web portfolio: https://varaddev.vercel.app/
 
----
+## Still open
 
-## 📸 Images to Replace
+- [ ] Optional: replace `public/og-image.png` (currently a 1200×630 screenshot of the hero) with a designed social card
+- [ ] After deploy: submit `sitemap.xml` in Google Search Console, check JSON-LD with the Rich Results Test, run Lighthouse
+- [ ] Commit the work (nothing committed yet)
 
-### Profile & Personal
-- [ ] `/public/images/profile.jpg` – Replace with your personal photo (recommended: 400x400px or higher, square aspect ratio)
+## Decisions (resolved 2026-09-30)
 
-### Education
-- [ ] `/public/images/education.png` – Replace with academic-themed illustration or university photo
+- [x] D1: Master Resume published as `/VARAD_PATIL_MASTER_RESUME.pdf` ("Full CV"); the AI/ML resume stays the main "Resume"
+- [x] D2: Both emails shown (Gmail + IITK)
+- [x] D3: Placeholders for projects without images
+- [x] D4: Location "IIT Kanpur, India"
 
-### Research
-- [ ] `/public/images/research-diagram.png` – Replace with your RAG architecture diagram or research visualization
+## Phase 0: Safety & housekeeping ✅
+- [x] Old backup resume moved out of `public/` to `../portfolio-private-backup/`
+- [x] `npm audit fix` (0 vulnerabilities)
+- [x] Lint fixed (clean)
+- [x] Dead files and CSS removed
 
-### Projects
-- [ ] `/public/images/project-1.png` – Legal RAG Chatbot screenshot/demo
-- [ ] `/public/images/project-2.png` – Minutes of Meeting Generator screenshot
-- [ ] `/public/images/project-3.png` – AI Resume Analyzer screenshot
+## Phase 1: Content synced with resumes ✅
+- [x] Projects: CivicPulse, CityLens, Resume Insight, Active-Break Monsoon, Cyclone Track, Air Quality, with metrics, tags and Live/Code/Kaggle links
+- [x] Legal RAG kept only under Research; DJB CRM removed (SDE)
+- [x] Research: M.Tech thesis (ongoing) added; ICTCS entry updated with the Springer chapter link
+- [x] Experience, achievements, positions, certifications, skills and education updated from the resumes
+- [x] Hero / About copy updated
 
-### Company Logos
-- [ ] `/public/images/company-altair.png` – Altair Engineering logo
-- [ ] `/public/images/company-bubblebyte.png` – Bubble Byte Ventures logo
+## Phase 2: SDE portfolio linking ✅
+- [x] Dev Portfolio link in Navbar (desktop + mobile), Hero, below Projects, Contact card, Footer, JSON-LD `sameAs`, `<noscript>`
+- [x] Full CV button in Hero, mobile Navbar, Contact
 
----
+## Phase 3: Animation smoothness ✅
+- [x] `transition-all` removed from every framer-animated element (new `HoverCard`)
+- [x] Stacked entrance animations removed (Hero image, About card, Education)
+- [x] Viewport trigger changed from `amount: 0.2` to a bottom margin, so tall grids reveal on time
+- [x] Framer hover on ~60 tech/skill pills replaced by CSS hover
+- [x] Shared `EASE`/`VIEWPORT` (`motion/ease.js`) and `SectionHeader`
+- [x] Checked with a headless browser at 1280 and 390 wide: every section reveals, no console errors, no horizontal scroll
 
-## 🔗 Links to Update
+## Phase 4: SEO ✅
+- [x] `//` double slash fixed everywhere; `robots.txt` no longer blocks `/assets/`; sitemap is root-only
+- [x] Real 1200×630 `og-image.png`; meta, keywords and JSON-LD (`knowsAbout`, `affiliation`, `award`, both emails) updated
 
-### Social & Contact
-- [ ] Update GitHub link in `src/data/content.js` → `personalInfo.github`
-- [ ] Verify LinkedIn URL is correct
-- [ ] Verify email address is correct
+## Phase 5: Performance & accessibility ✅
+- [x] Images converted to WebP (≈1.6 MB → ≈190 KB); unused DJB screenshot removed
+- [x] Navbar `aria-expanded`/`aria-controls`; Hero has `id="home"`; nav uses real anchors, so the URL hash updates; `scroll-padding-top` for the fixed navbar
 
-### Research
-- [ ] Add direct PDF link if available for research paper
-- [ ] Verify Springer publication link is correct
+## Phase 7: Images + SEO hardening ✅
+- [x] CivicPulse, CityLens and thesis (`pmvision.webp`) images wired in; new `rag.webp`; oversized screenshots downscaled to 1200px
+- [x] Build-time prerendering: full content in the HTML for non-JS crawlers and link previews, then hydration; no-JS fallback keeps content visible
+- [x] PNG icons (apple-touch 180, manifest 192/512), ScholarlyArticle JSON-LD, sitemap `lastmod`, single `<h1>`
+- [x] Verified against the production build: no hydration warnings, all 11 images load, all sections visible with JS off
 
----
-
-## 📝 Content Updates
-
-### Profile
-- [ ] Review and update bio text if needed
-- [ ] Update professional title if needed
-
-### Projects
-- [ ] Add GitHub repository links to projects (optional enhancement)
-- [ ] Add live demo links if available
-
-### Experience
-- [ ] Review job descriptions and update if needed
-- [ ] Add more details to role highlights if desired
-
----
-
-## 🎨 Optional Enhancements
-
-### Features to Consider Adding
-- [ ] **Dark Mode** – Add theme toggle for dark/light mode
-- [ ] **Publication PDF Viewer** – Embed PDF viewer for research paper
-- [ ] **Animated Section Transitions** – Add scroll-triggered animations
-- [ ] **Blog/Notes Section** – Add a section for technical writings
-- [ ] **Project Detail Pages** – Create individual pages for each project
-- [ ] **CV Download** – Add downloadable resume PDF
-- [ ] **Google Analytics** – Add analytics tracking
-
-### Design Improvements
-- [ ] Add custom favicon (`/public/favicon.svg`)
-- [ ] Add Open Graph image for social sharing
-- [ ] Consider adding subtle background patterns or gradients
-
----
-
-## 🚀 Deployment Checklist
-
-- [ ] All placeholder images replaced
-- [ ] All links verified and working
-- [ ] Tested on mobile devices
-- [ ] Tested on different browsers
-- [ ] SEO meta tags reviewed
-- [ ] Performance optimized (images compressed)
-- [ ] Deploy to hosting platform (Vercel, Netlify, GitHub Pages, etc.)
-
----
-
-## 📁 Image Specifications
-
-| Image | Recommended Size | Format | Notes |
-|-------|-----------------|--------|-------|
-| profile.jpg | 400x400px | JPG/PNG | Square, high quality |
-| education.png | 600x300px | PNG | Illustration or photo |
-| research-diagram.png | 800x600px | PNG | Architecture diagram |
-| project-*.png | 600x400px | PNG | Screenshots or mockups |
-| company-*.png | 200x200px | PNG | Logos with transparent bg |
-
----
-
-*Last updated: December 2024*
+## Phase 6: Docs ✅
+- [x] README, CLAUDE.md updated; PROFILE.md deleted (duplicated `content.js`)

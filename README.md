@@ -1,8 +1,8 @@
 # Varad Patil — AI/ML Engineer & Researcher Portfolio
 
-A fast, accessible, SEO-ready personal portfolio built with **React 19**, **Vite 7**, **Tailwind CSS v4**, and **Framer Motion**. Showcases research (RAG, LLMs), AI/ML projects, experience, and a downloadable resume.
+A fast, accessible, SEO-ready personal portfolio built with **React 19**, **Vite 7**, **Tailwind CSS v4**, and **Framer Motion 12**. Showcases research (M.Tech thesis, RAG publication), AI/ML projects, experience, and downloadable resumes. It is the "AI Portfolio" link on the placement resumes; full-stack work lives on the separate [Dev Portfolio](https://varaddev.vercel.app/).
 
-> Live: https://varadiitk.vercel.app/ *(replace with your deployed URL)*
+> Live: https://varadiitk.vercel.app/
 
 ---
 
@@ -15,7 +15,7 @@ A fast, accessible, SEO-ready personal portfolio built with **React 19**, **Vite
 - 📱 **PWA-lite** — `site.webmanifest` + theme color + maskable icon.
 - ♿ **Accessible** — semantic landmarks, skip-to-content link, `aria-label`s on icon buttons, focus-visible styles, keyboard-friendly nav.
 - 🖼 **Performance** — preloaded hero image, lazy-loaded gallery images, font preconnect, no source maps in production.
-- 📄 **Resume download** in Hero, Navbar, and Contact section.
+- 📄 **Resume + Full CV** (AI/ML resume and Master Resume) in Hero, Navbar, and Contact.
 - 🧩 **Single-source content** — edit everything from [`src/data/content.js`](src/data/content.js).
 
 ---
@@ -24,31 +24,22 @@ A fast, accessible, SEO-ready personal portfolio built with **React 19**, **Vite
 
 ```
 research-portfolio/
-├── index.html                  # SEO meta, JSON-LD, manifest
+├── index.html                  # SEO meta, JSON-LD, manifest, noscript fallback
 ├── public/
-│   ├── favicon.svg
-│   ├── robots.txt
-│   ├── sitemap.xml
-│   ├── site.webmanifest
-│   ├── VARAD_PATIL_RESUME_AI.pdf
-│   └── images/                 # profile, projects, research, company logos
+│   ├── VARAD_PATIL_RESUME_AI.pdf       # main (AI/ML) resume
+│   ├── VARAD_PATIL_MASTER_RESUME.pdf   # Full CV (all projects)
+│   ├── og-image.png                    # 1200×630 social card
+│   ├── robots.txt, sitemap.xml, site.webmanifest, favicon.svg
+│   └── images/                 # profile, projects, research (WebP), company logos
 ├── src/
-│   ├── main.jsx
-│   ├── App.jsx                 # MotionConfig + skip link + section routing
-│   ├── index.css               # Tailwind v4 + animations
-│   ├── components/
-│   │   ├── Navbar.jsx
-│   │   ├── Hero.jsx
-│   │   ├── About.jsx
-│   │   ├── Research.jsx
-│   │   ├── Projects.jsx
-│   │   ├── Experience.jsx
-│   │   ├── Skills.jsx
-│   │   ├── Contact.jsx
-│   │   ├── Footer.jsx
-│   │   └── motion/Motion.jsx   # FadeIn / Stagger / StaggerItem / MotionCard
-│   └── data/content.js         # All site content
-├── vite.config.js              # Build + chunk-splitting config
+│   ├── App.jsx                 # MotionConfig + skip link + section order
+│   ├── index.css               # Tailwind v4 + smooth scroll
+│   ├── data/content.js         # All site content
+│   └── components/
+│       ├── Navbar, Hero, About, Research, Projects, Experience, Skills, Contact, Footer
+│       ├── icons.jsx           # shared SVG icons + ImageWithFallback
+│       └── motion/             # Motion.jsx (FadeIn, Stagger, HoverCard, SectionHeader), ease.js
+├── vite.config.js
 └── package.json
 ```
 
@@ -64,7 +55,7 @@ research-portfolio/
 ```bash
 npm install
 npm run dev          # local dev server (http://localhost:5173)
-npm run build        # production build → dist/
+npm run build        # production build → dist/ (prerendered HTML)
 npm run preview      # serve the production build locally
 npm run lint         # ESLint
 ```
@@ -75,32 +66,21 @@ npm run lint         # ESLint
 
 All site content lives in [`src/data/content.js`](src/data/content.js):
 
-- `personalInfo` — name, title, email, social links, profile image, resume path
+- `personalInfo`: name, title, both emails, social links, Dev Portfolio URL, profile image, resume + full CV paths
 - `heroContent` — greeting, intro
-- `aboutContent`, `education`, `achievements`
-- `research`, `projects`, `experience`, `skills`
+- `aboutContent`, `education`, `achievements`, `positions`, `certifications`
+- `research`, `projects` (optional `image`, `tag`, `links`; a missing image shows a placeholder), `experience`, `skills`
 - `navLinks`
 
-Replace the resume by overwriting `public/VARAD_PATIL_RESUME_AI.pdf` (or update `personalInfo.resume`).
+The two resume PDFs are the source of truth for this content. Replace them by overwriting the files in `public/`, and keep `content.js` in sync with them.
 
 ---
 
-## 🔍 SEO Checklist — Before You Deploy
+## 🔍 SEO
 
-The site ships with strong SEO defaults. **You must update the placeholder domain** (`https://varadiitk.vercel.app//`) before going live.
+The site URL `https://varadiitk.vercel.app/` is hardcoded in `index.html` (canonical, OG/Twitter, JSON-LD), `public/robots.txt` and `public/sitemap.xml`. Change all of them together if the domain changes.
 
-Search & replace `https://varadiitk.vercel.app/` in these files:
-
-- [`index.html`](index.html) — `canonical`, `og:url`, `og:image`, `twitter:image`, JSON-LD `url`/`image`/`sameAs`
-- [`public/robots.txt`](public/robots.txt) — `Sitemap:` line
-- [`public/sitemap.xml`](public/sitemap.xml) — all `<loc>` entries
-
-Optional but recommended:
-
-- Add a dedicated **1200×630 OG image** at `public/og-image.png` and update the `og:image` / `twitter:image` URLs.
-- Submit `sitemap.xml` to [Google Search Console](https://search.google.com/search-console) and [Bing Webmaster Tools](https://www.bing.com/webmasters).
-- Verify structured data with the [Rich Results Test](https://search.google.com/test/rich-results).
-- Add a Google Analytics / Plausible / Umami snippet inside `index.html` if you want traffic insights.
+After deploying: submit `sitemap.xml` to Google Search Console and check the JSON-LD with the Rich Results Test.
 
 ---
 
@@ -137,8 +117,8 @@ If hosting under a sub-path (`/repo-name/`), set `base: '/repo-name/'` in [`vite
 
 | Area | Notes |
 |---|---|
-| **Performance** | Vendor chunk-splitting, font preconnect/preload, lazy images, no sourcemaps in prod |
-| **SEO** | Meta + OG + Twitter + canonical + JSON-LD + sitemap + robots |
+| **Performance** | Vendor chunk-splitting, font preconnect/preload, WebP + lazy images, no sourcemaps in prod |
+| **SEO** | Prerendered HTML, meta + OG + Twitter + canonical + JSON-LD (Person, WebSite, ScholarlyArticle) + sitemap + robots |
 | **Accessibility** | Skip link, semantic HTML, `aria-label`s, focus styles, reduced-motion respect |
 | **PWA** | `site.webmanifest`, theme color, SVG icon |
 | **No-JS fallback** | `<noscript>` block with contact info |
@@ -158,7 +138,7 @@ After deploying, audit with:
 | Framework | React 19 |
 | Build Tool | Vite 7 |
 | Styling | Tailwind CSS v4 |
-| Animation | Framer Motion 11 |
+| Animation | Framer Motion 12 |
 | Fonts | Inter, Source Serif 4 (Google Fonts) |
 | Linting | ESLint 9 |
 
@@ -174,4 +154,6 @@ After deploying, audit with:
 
 - **Email:** varadapatil123@gmail.com
 - **LinkedIn:** https://linkedin.com/in/varad-patil-web-dev
-- **GitHub:** https://github.com/devVaradPatil/
+- **Email (IITK):** varadap25@iitk.ac.in
+- **GitHub:** https://github.com/DevVaradPatil
+- **Dev Portfolio:** https://varaddev.vercel.app/
