@@ -6,11 +6,12 @@ Sources of truth:
 - `public/VARAD_PATIL_MASTER_RESUME.pdf`: Full CV (all projects)
 - SDE / web portfolio: https://varaddev.vercel.app/
 
-## Still open
+## Launch
 
-- [ ] Optional: replace `public/og-image.png` (currently a 1200×630 screenshot of the hero) with a designed social card
-- [ ] After deploy: submit `sitemap.xml` in Google Search Console, check JSON-LD with the Rich Results Test, run Lighthouse
-- [ ] Commit the work (nothing committed yet)
+- [x] Designed social card: `public/og-image.png` (1200×630, 449 KB; the 1733×907 original is in `../portfolio-private-backup/`)
+- [x] Google Search Console verification meta tag added to `index.html`
+- [x] After deploy: verify in Search Console, submit `sitemap.xml`, check JSON-LD with the Rich Results Test, run Lighthouse, refresh the LinkedIn preview via Post Inspector
+- [x] Commit the work
 
 ## Decisions (resolved 2026-09-30)
 
